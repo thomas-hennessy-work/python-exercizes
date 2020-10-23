@@ -1,15 +1,22 @@
 isbn = input("Please input the first 12 digits of the ISBN \n")
 isbnList = []
-total = float(0)
+total = int(0)
 
 # https://www.geeksforgeeks.org/python-split-string-into-list-of-characters/
 isbnList = [char for char in isbn]
 
 for x in isbnList:
     if x != "-":
-        if float(x)%2 == 0:
-            total = total + float(x)
+        if int(x)%2 == 0:
+            print(str(x) + " is even")
+            print("add " + str(x))
+            total = total + int(x)
+            print("total is " + str(total))
         else:
-            total = total + (float(x)*3)
+            print(str(x) + " is odd")
+            print("add " + str(int(x)*3))
+            total = total + (int(x)*3)
+            print("total is " + str(total))
 
-print(int(10 - (total%10)))
+total = (10 - (total%10))
+print("The last digit will be " + str(total))
