@@ -1,25 +1,23 @@
 firstWord = input("please enter the first word\n")
 secondWord = input("please enter the second word\n")
 
-print("near(" + firstWord + "), (" + secondWord + ")")
+print("near(" + firstWord + "), (" + secondWord + ")\n\n")
 
 firstwordList = isbnList = [char for char in firstWord]
-secondwordList = isbnList = [char for char in firstWord]
+secondwordList = isbnList = [char for char in secondWord]
 
 count = -1
 removed = False
 Possible = False
 
-for x in firstwordList:
-    count =+ 1
-    while len(secondwordList) >= count:
-        if (firstwordList[count] != secondwordList[count]) and removed == False:
-            del firstwordList[count]
-            print("first statement at " + str(count))
+for letter in firstwordList:
+    count += 1
+    if count < len(secondwordList):
+        if (letter != secondwordList[count]) and removed == False:
             Possible = True
-        if firstwordList[count] != secondwordList[count]:
-            notPossible = False
-            print("second statement at " + str(count))
+            removed = True
+        elif letter != secondwordList[count]:
+            Possible = False
             break
 
 print(Possible)
