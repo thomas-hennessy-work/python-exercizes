@@ -1,41 +1,41 @@
 def single_num(number):
-    if number = 1:
+    if number == 1:
         return "one"
-    if number = 2:
+    if number == 2:
         return "two"
-    if number = 3:
+    if number == 3:
         return "three"
-    if number = 4:
+    if number == 4:
         return "four"
-    if number = 5:
+    if number == 5:
         return "five"
-    if number = 6:
+    if number == 6:
         return "six"
-    if number = 7:
+    if number == 7:
         return "seven"
-    if number = 8:
+    if number == 8:
         return "eight"
-    if number = 9:
+    if number == 9:
         return "nine"
 
 def ten_num(number):
-    if number = 1:
+    if number == 1:
         return "ten"
-    if number = 2:
+    if number == 2:
         return "twenty"
-    if number = 3:
+    if number == 3:
         return "thirty"
-    if number = 4:
+    if number == 4:
         return "fourty"
-    if number = 5:
+    if number == 5:
         return "fifty"
-    if number = 6:
+    if number == 6:
         return "sixty"
-    if number = 7:
+    if number == 7:
         return "seventy"
-    if number = 8:
+    if number == 8:
         return "eightty"
-    if number = 9:
+    if number == 9:
         return "ninety"
 
 def hundred_combiner(number):
@@ -56,9 +56,12 @@ def million(number):
 def thousand(number):
     return hundred_combiner(number), "thousand"
 
+def final_word(given_number):
+    return "hello"
 
-given_number = input("Enter a number")
-number_len = len(given_number)
 
-number_length = len(given_number)
+# given_number = input("Enter a number")
+# number_len = len(given_number)
+
+# number_length = len(given_number)
 
