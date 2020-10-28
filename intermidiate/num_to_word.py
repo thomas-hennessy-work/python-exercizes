@@ -1,52 +1,118 @@
 def single_num(number):
     if number == "1":
         return "one"
-    if number == "2":
+    elif number == "2":
         return "two"
-    if number == "3":
+    elif number == "3":
         return "three"
-    if number == "4":
+    elif number == "4":
         return "four"
-    if number == "5":
+    elif number == "5":
         return "five"
-    if number == "6":
+    elif number == "6":
         return "six"
-    if number == "7":
+    elif number == "7":
         return "seven"
-    if number == "8":
+    elif number == "8":
         return "eight"
-    if number == "9":
+    elif number == "9":
         return "nine"
     else:
         return ""
 
 def ten_num(number):
     if number == "1":
-        return " ten"
-    if number == "2":
-        return "twenty-"
-    if number == "3":
-        return "thirty"
-    if number == "4":
-        return "fourty"
-    if number == "5":
-        return "fifty"
-    if number == "6":
-        return "sixty"
-    if number == "7":
-        return "seventy"
-    if number == "8":
-        return "eightty"
-    if number == "9":
-        return "ninety"
+        return " ten "
+    elif number == "2":
+        return " twenty-"
+    elif number == "3":
+        return " thirty-"
+    elif number == "4":
+        return " fourty-"
+    elif number == "5":
+        return " fifty-"
+    elif number == "6":
+        return " sixty-"
+    elif number == "7":
+        return " seventy-"
+    elif number == "8":
+        return " eightty-"
+    elif number == "9":
+        return " ninety-"
     else:
         return ""
 
 def hundred_combiner(number):
     first_number = number[0]
-    second_number = number[1]
-    third_number = number[2]
-    return single_num(first_number) + " hundred and " + ten_num(second_number) + single_num(third_number)
+    if number[1] == "1" and number[2] == "1":
+        second_number = " eleven"
+    elif number[1] == "1" and number[2] == "2":
+        second_number = " twelve"
+    elif number[1] == "1" and number[2] == "3":
+        second_number = " thirteen"
+    elif number[1] == "1" and number[2] == "4":
+        second_number = " fourteen"
+    elif number[1] == "1" and number[2] == "5":
+        second_number = " fifteen"
+    elif number[1] == "1" and number[2] == "6":
+        second_number = " sixteen"
+    elif number[1] == "1" and number[2] == "7":
+        second_number = " seventeen"
+    elif number[1] == "1" and number[2] == "8":
+        second_number = " eighteen"
+    elif number[1] == "1" and number[2] == "9":
+        second_number = " nineteen"
+    else:
+        if first_number != 0:
+            second_number = number[1]
+            third_number = number[2]
+            return single_num(first_number) + " hundred and" + ten_num(second_number) + single_num(third_number)
+        else:
+            second_number = number[1]
+            third_number = number[2]
+            return " and" + ten_num(second_number) + single_num(third_number)
+
+
+    if first_number != 0:
+        return " and" + second_number
+    else:
+        return single_num(first_number) + " hundred and" + second_number
+
+def hundred_combiner_two(number):
+    first_number = number[0]
+    if number[0] == "1" and number[2] == "1":
+        second_number = " eleven"
+    elif number[1] == "1" and number[2] == "2":
+        second_number = " twelve"
+    elif number[1] == "1" and number[2] == "3":
+        second_number = " thirteen"
+    elif number[1] == "1" and number[2] == "4":
+        second_number = " fourteen"
+    elif number[1] == "1" and number[2] == "5":
+        second_number = " fifteen"
+    elif number[1] == "1" and number[2] == "6":
+        second_number = " sixteen"
+    elif number[1] == "1" and number[2] == "7":
+        second_number = " seventeen"
+    elif number[1] == "1" and number[2] == "8":
+        second_number = " eighteen"
+    elif number[1] == "1" and number[2] == "9":
+        second_number = " nineteen"
+    else:
+        if first_number != 0:
+            second_number = number[1]
+            third_number = number[2]
+            return single_num(first_number) + " hundred and" + ten_num(second_number) + single_num(third_number)
+        else:
+            second_number = number[1]
+            third_number = number[2]
+            return " and" + ten_num(second_number) + single_num(third_number)
+
+
+    if first_number != 0:
+        return " and" + second_number
+    else:
+        return single_num(first_number) + " hundred and" + second_number
 
 def trillions(number):
     return hundred_combiner(number) + " trillion"
@@ -64,9 +130,17 @@ def final_word(given_number):
     number_as_str = str(given_number)
     number_len = len(number_as_str)
 
+    # converting first three numbers to words
     first_three = number_as_str[number_len-3:number_len]
+    if len(first_three) == 3:
+        first_three_word = hundred_combiner(first_three)
+    if len(first_three) == 2
+        first_three_word = 
 
-    result = hundred_combiner(first_three)
+    if number_len > 3:
+        second_three = number_as_str[number_len-6:number_len-3]
+
+    result = first_three_word
 
     return result
 
