@@ -22,21 +22,21 @@ def ten_num(number):
     if number == "1":
         return " ten "
     elif number == "2":
-        return " twenty-"
+        return " twenty "
     elif number == "3":
-        return " thirty-"
+        return " thirty "
     elif number == "4":
-        return " forty-"
+        return " forty "
     elif number == "5":
-        return " fifty-"
+        return " fifty "
     elif number == "6":
-        return " sixty-"
+        return " sixty "
     elif number == "7":
-        return " seventy-"
+        return " seventy "
     elif number == "8":
-        return " eightty-"
+        return " eightty "
     elif number == "9":
-        return " ninety-"
+        return " ninety "
 
 def hundred_last_two(number):
     if number[0] == "1" and number[1] == "1":
@@ -68,60 +68,61 @@ def hundred_combiner(number):
     if first_number != "0":
         return single_num(first_number) + " hundred and" + hundred_last_two(second_number + third_number)
     else:
-        return " and" + hundred_last_two(second_number + third_number)
-
-def hundred_combiner_two(number):
-    first_number = number[0]
-    if number[0] == "1" and number[2] == "1":
-        second_number = " eleven"
-    elif number[1] == "1" and number[2] == "2":
-        second_number = " twelve"
-    elif number[1] == "1" and number[2] == "3":
-        second_number = " thirteen"
-    elif number[1] == "1" and number[2] == "4":
-        second_number = " fourteen"
-    elif number[1] == "1" and number[2] == "5":
-        second_number = " fifteen"
-    elif number[1] == "1" and number[2] == "6":
-        second_number = " sixteen"
-    elif number[1] == "1" and number[2] == "7":
-        second_number = " seventeen"
-    elif number[1] == "1" and number[2] == "8":
-        second_number = " eighteen"
-    elif number[1] == "1" and number[2] == "9":
-        second_number = " nineteen"
-    else:
-        if first_number != 0:
-            second_number = number[1]
-            third_number = number[2]
-            return single_num(first_number) + " hundred and" + ten_num(second_number) + single_num(third_number)
-        else:
-            second_number = number[1]
-            third_number = number[2]
-            return " and" + ten_num(second_number) + single_num(third_number)
-
-
-    if first_number != 0:
-        return " and" + second_number
-    else:
-        return single_num(first_number) + " hundred and" + second_number
+        return "and" + hundred_last_two(second_number + third_number)
 
 def final_word(given_number):
     number_as_str = str(given_number)
     number_len = len(number_as_str)
     result = ""
 
+    # convert fith three numbers to words
+    if number_len > 12:
+        if number_len > 14:
+            second_three = number_as_str[number_len-15:number_len-12]
+            result += (hundred_combiner(second_three) + " trillion, ")
+        if number_len == 14:
+            second_three = number_as_str[number_len-14:number_len-12]
+            result += (hundred_last_two(second_three) + " trillion, ")
+        if number_len == 13:
+            second_three = number_as_str[number_len-13:number_len-12]
+            result += (single_num(second_three) + " trillion, ")
+
+    # convert fourth three numbers to words
+    if number_len > 9:
+        if number_len > 11:
+            second_three = number_as_str[number_len-12:number_len-9]
+            result += (hundred_combiner(second_three) + " billion, ")
+        if number_len == 11:
+            second_three = number_as_str[number_len-11:number_len-9]
+            result += (hundred_last_two(second_three) + " billion, ")
+        if number_len == 10:
+            second_three = number_as_str[number_len-10:number_len-9]
+            result += (single_num(second_three) + " billion, ")
+
+    # convert third three numbers to words
+    if number_len > 6:
+        if number_len > 8:
+            second_three = number_as_str[number_len-9:number_len-6]
+            result += (hundred_combiner(second_three) + " million, ")
+        if number_len == 8:
+            second_three = number_as_str[number_len-8:number_len-6]
+            result += (hundred_last_two(second_three) + " million, ")
+        if number_len == 7:
+            second_three = number_as_str[number_len-7:number_len-6]
+            result += (single_num(second_three) + " million, ")
+
+
     # convert second three numbers to words
     if number_len > 3:
-        if number_len == 6:
+        if number_len > 5:
             second_three = number_as_str[number_len-6:number_len-3]
-            result += (hundred_combiner(second_three) + " thousand")
+            result += (hundred_combiner(second_three) + " thousand ")
         if number_len == 5:
             second_three = number_as_str[number_len-5:number_len-3]
-            result += (hundred_last_two(second_three) + " thousand")
+            result += (hundred_last_two(second_three) + " thousand ")
         if number_len == 4:
             second_three = number_as_str[number_len-4:number_len-3]
-            result += (single_num(second_three) + " thousand")
+            result += (single_num(second_three) + " thousand ")
 
     # converting first three numbers to words
     first_three = number_as_str[number_len-3:number_len]
