@@ -36,7 +36,7 @@ class Mountains:
             # gets the next value for consideration
             current_elim_position = count + self.currentPos
             # gets the number in the selected position
-            current_elim_amount = self.peakList[current_elim_position]
+            current_elim_amount = self.peakList[current_elim_position-1]
 
             # any values between this value and the previously selected value are counted as a point 
             current_elim_value = count
@@ -44,10 +44,10 @@ class Mountains:
             considered_count = 1
 
             # goes through values after the given value
-            while(current_elim_position + considered_count) < len(self.peakList):
+            while(current_elim_position + considered_count) <= len(self.peakList):
 
                 # if one of the vlaues after is smaller, add a point
-                if self.peakList[current_elim_position + considered_count] > current_elim_value:
+                if self.peakList[current_elim_position + considered_count -1] > current_elim_value:
                     current_elim_value += 1
 
                 # select next value
@@ -60,6 +60,7 @@ class Mountains:
                 best_elim_pos = current_elim_position
 
         self.pathList.append(best_elim_value)
+        self.currentPos = best_elim_pos
         current_elim_position = best_elim_pos
 
 
