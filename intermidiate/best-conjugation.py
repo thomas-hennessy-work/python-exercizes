@@ -1,12 +1,18 @@
+import re
+
 def get_all_words():
     with open('wordlist.txt', 'r') as word_list:
         words = word_list.readlines()
+        
+        for word in words:
+            word = re.sub('[^a-zA-Z]+', '', word)
+
     return words
 
 def find_sub_words(word_1):
     sub_word_list = []
     count_left = 0
-    count_right = 0
+    count_right = 1
 
     while count_left < len(word_1):
         # incrementing the right counter
@@ -29,7 +35,16 @@ def find_sub_words(word_1):
 def best_conjugation(word_1):
     all_words = get_all_words()
     sub_words = find_sub_words(word_1)
+    valid_word_list = []
 
     for word in sub_words:
-        if word in all_words:
-            
+        for possible_word in all_words:
+            print("word =", word, "possible_word =", possible_word)
+            if word == str(possible_word):
+                valid_word_list.append(word)
+                break
+
+    return valid_word_list
+
+
+print(best_conjugation("awesomeness"))
